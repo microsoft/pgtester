@@ -20,6 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
+Initialize `PgTester` instance
 
 ```
 require 'pg_tester'
@@ -36,26 +37,46 @@ psql = PgTester.new({
   createuser_path:  '/usr/local/bin/which createuser',
   createdb_path:    '/usr/local/bin/which createdb',
   })
+```
 
-## use case 1
-psql.setup # This will create a test postgres cluster in /tmp, connection as testpostgresql user and database name testpostgresql
+Case 1
+
+Create a test postgres cluster in /tmp, connection as testpostgresql user and database name testpostgresql and run queries against the test database.
+```
+psql.setup 
 result = psql.exec(query)
 # ... do some expectation on result
-psql.teardown # Cluster is torn down and dir in /tmp deleted
+```
 
-## use case 2 -- this setup, execute the block and teardown
+Remember to teardown the database to stop postgresql
+```
+psql.teardown # Cluster is torn down and dir in /tmp deleted
+```
+
+Case 2 
+
+Execute the block and teardown database after block execution
+```
 psql.exec(query) do |result|
   # ... do some expectation on result
 end
+```
 
-## use case 3 -- all in one using default
+Case 3 
+
+Pass custom arguments and execute query in block
+```
 PgTester.new({
   port:             '312',
   data_dir:         '/tmp/',
 }).exec(query) { |result| # some expectation }
+```
 
-## use case 4 -- the rspec usage
+Case 4 
 
+The rspec usage
+
+```
 context 'run query in block' do
   it 'should run exec query in a block' do
     PgTester.new().exec('SELECT 2') do |result|
@@ -72,6 +93,10 @@ end
 
 ## Contributing
 
-Pull requests are welcome! You can run the tests by doing
+Pull requests are welcome! 
+
+## Tests
+
+You can run the tests by doing
 
 `bundle exec rspec`
