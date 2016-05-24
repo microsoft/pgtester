@@ -4,7 +4,7 @@ A handy gem to help with testing postgresql related scripts or anything postgres
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add this line to your application's Gemfile (source https://rubygems.org):
 
 ```ruby
 gem 'pg_tester'
