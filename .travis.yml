@@ -7,7 +7,7 @@ before_install:
   - sudo apt-get install postgresql
   
 database:
-  postgresql:
+  postgres:
     - "9.5"
   
 script: bundle exec rspec
