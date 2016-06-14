@@ -2,4 +2,4 @@ language: ruby
 rvm:
   - 2.1
   
-script: bundle exec rspec
+script: apt-get install postgresql; bundle exec rspec
