@@ -6,4 +6,8 @@ before_install:
   - gem install bundler
   - sudo apt-get install postgresql
   
+database:
+  postgresql:
+    - "9.5"
+  
 script: bundle exec rspec
