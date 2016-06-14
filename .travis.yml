@@ -4,5 +4,6 @@ rvm:
   
 before_install:
   - gem install bundler
+  - sudo apt-get install postgresql-9.5
   
-script: sudo apt-get install postgresql; bundle exec rspec
+script: bundle exec rspec
