@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.license       = "MIT"
   spec.summary       = %q{Runs tests against a temporary postgresql instance}
   spec.description   = %q{Test postgresql scripts and run queries against a temporary postgresql instance}
-  spec.homepage      = "https://github.int.yammer.com/yammer/pgtester"
+  spec.homepage      = "https://github.com/Microsoft/pgtester"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
