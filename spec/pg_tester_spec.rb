@@ -8,7 +8,7 @@ describe PgTester do
   let(:user) { 'buddy' }
   let(:database) { 'testbuddy' }
   let(:port) { 1234 }
-  let(:host) { 'neeranator.az9.db4.yammer.com' }
+  let(:host) { 'neeranator.com' }
   let(:data_dir)       { '/tmp/pg_tester' }
   let(:initdb_path)     { '/a_dir/bin/initdb' }
   let(:pgctl_path)      { '/a_dir/bin/pg_ctl' }
