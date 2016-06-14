@@ -1,4 +1,4 @@
-# PgTester
+# PgTester  ![Travis](https://travis-ci.org/Microsoft/pgtester.svg?branch=master)
 
 A handy gem to help with testing postgresql related scripts or anything postgresql related
 
