@@ -4,7 +4,7 @@ rvm:
   
 before_install:
   - gem install bundler
-  - sudo apt-get install postgresql
   - sudo service postgresql stop
+  - sudo apt-get install postgresql
   
 script: bundle exec rspec
