@@ -1,10 +1,10 @@
 # PgTester  [![Build Status](https://travis-ci.org/Microsoft/pgtester.svg?branch=master)](https://travis-ci.org/Microsoft/pgtester)   [![Dependency Status](https://www.versioneye.com/user/projects/5760240349310500442edfc3/badge.svg?style=flat)](https://www.versioneye.com/user/projects/5760240349310500442edfc3)
 
-A handy gem to help with testing postgresql related scripts or anything postgresql related
+A handy gem to help with testing postgresql related scripts or anything PostgreSQL related.
 
 ## Installation
 
-Add this line to your application's Gemfile (source https://rubygems.org):
+Add this line to your application's `Gemfile` (source <https://rubygems.org>):
 
 ```ruby
 gem 'pg_tester'
@@ -12,17 +12,21 @@ gem 'pg_tester'
 
 And then execute:
 
-    $ bundle
+```
+$ bundle
+```
 
 Or install it yourself as:
 
-    $ gem install pg_tester
+```
+$ gem install pg_tester
+```
 
 ## Usage
 
-Initialize `PgTester` instance
+Initialize a `PgTester` instance:
 
-```
+```ruby
 require 'pg_tester'
 
 psql = PgTester.new({
@@ -39,44 +43,48 @@ psql = PgTester.new({
   })
 ```
 
-Case 1
+### Case 1
 
-Create a test postgres cluster in /tmp, connection as testpostgresql user and database name testpostgresql and run queries against the test database.
-```
+Create a test PostgreSQL cluster in `/tmp`, connect as `testpostgresql` user and database name `testpostgresql`, and run queries against the test database:
+
+```ruby
 psql.setup 
 result = psql.exec(query)
 # ... do some expectation on result
 ```
 
-Remember to teardown the database to stop postgresql
-```
+Remember to teardown the database to stop PostgreSQL:
+
+```ruby
 psql.teardown # Cluster is torn down and dir in /tmp deleted
 ```
 
-Case 2 
+### Case 2 
 
-Execute the block and teardown database after block execution
-```
+Execute the block and teardown database after block execution:
+
+```ruby
 psql.exec(query) do |result|
   # ... do some expectation on result
 end
 ```
 
-Case 3 
+### Case 3 
 
-Pass custom arguments and execute query in block
-```
+Pass custom arguments and execute query in block:
+
+```ruby
 PgTester.new({
   port:             '312',
   data_dir:         '/tmp/',
 }).exec(query) { |result| # some expectation }
 ```
 
-Case 4 
+### Case 4 
 
-The rspec usage
+Use inside `rspec` specs:
 
-```
+```ruby
 context 'run query in block' do
   it 'should run exec query in a block' do
     PgTester.new().exec('SELECT 2') do |result|
@@ -88,15 +96,16 @@ context 'run query in block' do
     PgTester.new().exec('SELECT 3') { |result| expect(result.getvalue(0,0)).to eq("3") }
   end
 end
-
 ```
-
-## Contributing
-
-Pull requests are welcome! 
 
 ## Tests
 
 You can run the tests by doing
 
 `bundle exec rspec`
+
+## Contributing
+
+Pull requests are welcome!
+
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
