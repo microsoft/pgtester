@@ -6,7 +6,7 @@ before_install:
   - gem install bundler
   #- sudo service postgresql stop
   - ls /usr/lib/postgresql/9.1/bin
-  - sudo apt-get install postgresql
+  #- sudo apt-get install postgresql
 
   
 script: export PATH=/usr/lib/postgresql/9.1/bin:$PATH ; bundle exec rspec
