@@ -9,4 +9,4 @@ before_install:
   - sudo apt-get install postgresql
 
   
-script: bundle exec rspec
+script: export PATH=/usr/lib/postgresql/9.1/bin:$PATH ; bundle exec rspec
