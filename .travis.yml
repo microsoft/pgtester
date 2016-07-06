@@ -9,4 +9,4 @@ before_install:
   #- sudo apt-get install postgresql
 
   
-script: export PATH=/usr/lib/postgresql/9.1/bin:$PATH ; /usr/lib/postgresql/9.1/bin/initdb /tmp/pg_tester/ -A trust -E utf-8; /usr/lib/postgresql/9.1/bin/pg_ctl start -o '-p 6433' -D /tmp/pg_tester/; ls /tmp/pg_tester
+script: export PATH=/usr/lib/postgresql/9.1/bin:$PATH ; bundle exec rspec
