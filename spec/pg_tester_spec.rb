@@ -146,7 +146,7 @@ describe PgTester do
       it 'should have the postmaster.pid inside the data directory' do
         subject.create_data_dir
         subject.initdb
-        subject.rundb
+        puts "IM RUNNING #{subject.rundb}"
         expect(File.exists?("#{subject.data_dir}/postmaster.pid")).to eq(true)
       end
 
