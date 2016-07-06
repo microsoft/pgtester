@@ -135,7 +135,8 @@ describe PgTester do
     context 'initialize the database' do
       subject { described_class.new }
       it 'should have the postgresql.conf inside the data directory' do
-        subject.setup
+        subject.create_data_dir
+        subject.initdb
         expect(File.exists?("#{subject.data_dir}/postgresql.conf")).to eq(true)
       end
     end
@@ -143,8 +144,9 @@ describe PgTester do
     context 'run the database via pgctl' do 
       subject { described_class.new }
       it 'should have the postmaster.pid inside the data directory' do
-        subject.setup
-        #subject.rundb
+        subject.create_data_dir
+        subject.initdb
+        subject.rundb
         expect(File.exists?("#{subject.data_dir}/postmaster.pid")).to eq(true)
       end
 
