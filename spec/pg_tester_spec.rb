@@ -32,8 +32,8 @@ describe PgTester do
 
   describe '#initialize' do
     context 'with initdb_path as emtpy' do
-      it 'should raise an error' do
-        expect { described_class.new({:initdb_path => ""}) }.to raise_error
+      it 'raises a RuntimeError' do
+        expect { described_class.new({:initdb_path => ""}) }.to raise_error(RuntimeError)
       end
     end
 
